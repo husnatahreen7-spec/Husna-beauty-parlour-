@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Husna Beauty Parlour | Elegance Redefined</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --maroon: #3d0f1f;
+            --rose: #7a2338;
+            --gold: #c89a4a;
+            --ivory: #faf6f0;
+            --text-dark: #2d2d2d;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--ivory);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            color: var(--maroon);
+        }
+
+        ul { list-style: none; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 2px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border: none;
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: white;
+        }
+
+        .btn-gold:hover {
+            background-color: var(--maroon);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--maroon);
+            color: var(--maroon);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--maroon);
+            color: white;
+        }
+
+        /* --- Navigation --- */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            color: var(--maroon);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--maroon);
+            transition: var(--transition);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 100px 0;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(250, 246, 240, 0.8), rgba(250, 246, 240, 0.8)), 
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=1920') center/cover;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--rose);
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            border-top: 1px solid rgba(200, 154, 74, 0.3);
+            padding-top: 30px;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        /* --- About Section --- */
+        .section-padding { padding: 100px 0; }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .about-img {
+            background: var(--gold);
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        /* --- Services Grid --- */
+        .services { background-color: white; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            padding: 40px;
+            background: var(--ivory);
+            border-bottom: 4px solid var(--gold);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: var(--maroon);
+            color: white;
+        }
+
+        .service-card:hover h3 { color: var(--gold); }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .price {
+            display: block;
+            margin-top: 20px;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        /* --- Gallery --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background-color: #ddd;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+            filter: grayscale(20%);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        /* --- Testimonials --- */
+        .testimonials { background-color: var(--rose); color: white; }
+        .testimonials h2 { color: white; }
+        .testimonials h2::after { background-color: var(--gold); }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testi-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 5px;
+            font-style: italic;
+        }
+
+        .client-name {
+            display: block;
+            margin-top: 20px;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        /* --- Contact & Booking --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+        }
+
+        .info-item { margin-bottom: 25px; }
+        .info-item h4 { color: var(--gold); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+
+        .booking-form {
+            background: white;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 5px; font-size: 0.9rem; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            font-family: inherit;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--maroon);
+            color: white;
+            padding: 60px 0 20px;
+            text-align: center;
+        }
+
+        .footer-logo { font-size: 2rem; color: var(--gold); margin-bottom: 20px; }
+        .copyright { margin-top: 40px; font-size: 0.8rem; opacity: 0.7; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 992px) {
+            .hero-content h1 { font-size: 3rem; }
+            .about-grid, .contact-container { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                text-align: center;
+                padding: 40px 0;
+                transition: var(--transition);
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active { left: 0; }
+            .hamburger { display: flex; }
+            .hero-stats { gap: 20px; flex-wrap: wrap; }
+            .hero-content h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Husna Beauty Parlour</a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <p>Premium Beauty Care</p>
+                <h1>Unveil Your Inner Radiance</h1>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-gold">Book Appointment</a>
+                    <a href="#services" class="btn btn-outline">View Services</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>10+</h3>
+                        <p>Years Exp.</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>5k+</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>50+</h3>
+                        <p>Services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section-padding" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800" alt="Parlour Interior">
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">Our Story</h2>
+                    <p>Welcome to Husna Beauty Parlour, where we believe beauty is more than skin deep. Founded with a passion for excellence, we have been providing top-tier grooming and wellness services for over a decade.</p>
+                    <br>
+                    <p>Our expert stylists and therapists are dedicated to providing a personalized experience, ensuring you leave our sanctuary feeling refreshed, confident, and beautiful.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section-padding services" id="services">
+        <div class="container">
+            <h2 class="section-title">Luxury Services</h2>
+            <div class="services-grid">
+                <!-- Hair -->
+                <div class="service-card">
+                    <h3>Hair Styling & Care</h3>
+                    <p>Professional cuts, coloring, smoothing treatments, and restorative spa therapies.</p>
+                    <span class="price">Starting from ₹499</span>
+                </div>
+                <!-- Skin -->
+                <div class="service-card">
+                    <h3>Skin & Facials</h3>
+                    <p>Customized facials for all skin types using organic and premium products.</p>
+                    <span class="price">Starting from ₹899</span>
+                </div>
+                <!-- Bridal -->
+                <div class="service-card">
+                    <h3>Bridal Packages</h3>
+                    <p>Complete makeover for your special day including makeup, draping, and hair.</p>
+                    <span class="price">Starting from ₹5,999</span>
+                </div>
+                <!-- Mehendi -->
+                <div class="service-card">
+                    <h3>Mehendi Designs</h3>
+                    <p>Intricate Arabic and traditional Mehendi designs for every occasion.</p>
+                    <span class="price">Starting from ₹199</span>
+                </div>
+                <!-- Waxing -->
+                <div class="service-card">
+                    <h3>Waxing & Threading</h3>
+                    <p>Hygienic and painless hair removal services for smooth, glowing skin.</p>
+                    <span class="price">Starting from ₹50</span>
+                </div>
+                <!-- Nail Art -->
+                <div class="service-card">
+                    <h3>Nail Art</h3>
+                    <p>Gel extensions, chic nail art, and relaxing manicures/pedicures.</p>
+                    <span class="price">Starting from ₹399</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Placeholder -->
+    <section class="section-padding" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Our Work</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&q=60&w=400" alt="Work 1"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=60&w=400" alt="Work 2"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&q=60&w=400" alt="Work 3"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1527799822367-a05eb58c28ee?auto=format&fit=crop&q=60&w=400" alt="Work 4"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-padding testimonials">
+        <div class="container">
+            <h2 class="section-title">Client Reviews</h2>
+            <div class="testimonial-grid">
+                <div class="testi-card">
+                    <p>"Husna did an amazing job on my bridal makeup. I felt like a queen! Highly recommended."</p>
+                    <span class="client-name">- Sarah Khan</span>
+                </div>
+                <div class="testi-card">
+                    <p>"The best hair spa I've ever had. The staff is professional and the environment is so relaxing."</p>
+                    <span class="client-name">- Priya Sharma</span>
+                </div>
+                <div class="testi-card">
+                    <p>"Very hygienic and affordable. My go-to place for waxing and threading every month."</p>
+                    <span class="client-name">- Anjali Verma</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Booking -->
+    <section class="section-padding" id="contact">
+        <div class="container">
+            <h2 class="section-title">Book An Appointment</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <h4>Visit Us</h4>
+                        <p>123 Beauty Lane, Hyderabad, Telangana, India</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>Call / WhatsApp</h4>
+                        <p>+91 93980 79746</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>Email Us</h4>
+                        <p>husnatahreen7@gmail.com</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>Opening Hours</h4>
+                        <p>Mon - Sat: 10:00 AM - 8:00 PM<br>Sun: 11:00 AM - 5:00 PM</p>
+                    </div>
+                </div>
+
+                <form class="booking-form" id="bookingForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" required placeholder="Enter your phone">
+                    </div>
+                    <div class="form-group">
+                        <label>Service</label>
+                        <select required>
+                            <option value="">Select a Service</option>
+                            <option>Hair Styling</option>
+                            <option>Facial / Skin Care</option>
+                            <option>Bridal Package</option>
+                            <option>Mehendi</option>
+                            <option>Nail Art</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Date</label>
+                        <input type="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea rows="4" placeholder="Any special requests?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-gold" style="width: 100%;">Confirm Booking</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Husna Beauty Parlour</div>
+            <p>Elegance Redefined | Quality Guaranteed</p>
+            <div class="copyright">
+                &copy; 2023 Husna Beauty Parlour. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Sticky Header Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.padding = '10px 0';
+            } else {
+                header.style.padding = '0';
+            }
+        });
+
+        // Form Submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for booking with Husna Beauty Parlour! We will contact you shortly to confirm your appointment.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
